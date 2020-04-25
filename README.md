@@ -1,1 +1,3 @@
-TSC打印机测试
+# TSCLabelPrint
+TSC打印机打印标签
+使用了TSC官方的64位DLL
