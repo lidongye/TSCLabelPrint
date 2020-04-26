@@ -14,3 +14,5 @@ def closePrinter():
 def sendCommand(command):
     tsclib.sendcommand(command)
 
+def
+
