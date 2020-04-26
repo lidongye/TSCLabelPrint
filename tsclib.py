@@ -20,6 +20,19 @@ def closePrinter():
     '''
     tsclib.closeport()
 
+def setupPrinter(labelW, labelH, speed, darkness, sensor, gap, offset):
+    '''
+    设置标签宽度，高度，打印速度，打印浓度，传感器类别，标签垂直间距，偏移距离。
+    :param labelW:
+    :param labelH:
+    :param speed:
+    :param darkness:
+    :param sensor:
+    :param gap:
+    :param offset:
+    :return:
+    '''
+
 def clearBuffer():
     '''
     清除打印机缓存
@@ -44,3 +57,36 @@ def barCode(X, Y, barType, barH, barText, barDegree, width, narrow, content):
     :return:
     '''
     tsclib.barcode(X, Y, barType, barH, barText, barDegree, width, narrow, content)
+
+def sendCommand(command):
+    '''
+    发送指令到打印机
+    :param command: 字符串型，指令参考TSPL
+    :return: 无
+    '''
+    tsclib.sendcommand(command)
+
+def printLabel(setsNum, copiesNum):
+    '''
+    打印标签
+    :param setsNum:字符串型，打印式数
+    :param copiesNum: 字符串型，打印份数
+    :return: 无
+    '''
+    tsclib.printlabel(setsNum, copiesNum)
+
+def downloadPcx(filePath, fileName):
+    '''
+    下载单色PCX格式图片至打印机
+    :param filePath: 字符串型，文件路径
+    :param fileName: 字符串型，下载到打印机内的名称（使用大写英文）
+    :return: 无
+    '''
+    tsclib.downloadpcx(filePath, fileName)
+
+def formFeed():
+    '''
+    跳页，须在setup后使用
+    :return: 无
+    '''
+    tsclib.formfeed()
