@@ -5,13 +5,13 @@ import ctypes
 
 tsclib = ctypes.WinDLL(r"./tsclib/TSCLIB.dll")
 
-def openPrinter(ptrName):
+def openPrinter(prtName):
     '''
     打开打印机的端口
-    :param ptrName:打印机名称，字符串型，如"TSC TTP-244M Pro"。
+    :param prtName:打印机名称，字符串型，如"TSC TTP-244M Pro"。
     :return:无
     '''
-    tsclib.openport(ptrName)
+    tsclib.openport(prtName.encode("gbk"))  # 打印机不接受UTF-8字符串
 
 def closePrinter():
     '''
@@ -32,7 +32,7 @@ def setupPrinter(labelW, labelH, speed, darkness, sensor, gap, offset):
     :param offset:字符串型，偏移距离，单位mm，一般标签为"0"
     :return:
     '''
-    tsclib.setup(labelW, labelH, speed, darkness, sensor, gap, offset)
+    tsclib.setup(str(labelW).encode("gbk"), str(labelH).encode("gbk"), str(speed).encode("gbk"), str(darkness).encode("gbk"), str(sensor).encode("gbk"), str(gap).encode("gbk"), str(offset).encode("gbk"))  # 为调用方便转成字符串型
 
 def clearBuffer():
     '''
@@ -82,7 +82,7 @@ def printFont(X, Y, fontName, degree, scaleX, scaleY, content):
     :param content:字符串型，文字内容
     :return:无
     '''
-    tsclib.printfont(X, Y, fontName, degree, scaleX, scaleY, content)
+    tsclib.printerfont(str(X).encode("gbk"), str(Y).encode("gbk"), fontName.encode("gbk"), str(degree).encode("gbk"), str(scaleX).encode("gbk"), str(scaleY).encode("gbk"), content.encode("gbk"))
 
 def sendCommand(command):
     '''
@@ -99,7 +99,7 @@ def printLabel(setsNum, copiesNum):
     :param copiesNum: 字符串型，打印份数
     :return: 无
     '''
-    tsclib.printlabel(setsNum, copiesNum)
+    tsclib.printlabel(str(setsNum), str(copiesNum))  # 为调用方便，转成字符串
 
 def downloadPcx(filePath, fileName):
     '''
@@ -137,7 +137,7 @@ def windowsFont(X, Y, fontH, degree, fontStyle, underline, fontName, content):
     :param content: 字符串型，打印内容
     :return: 无
     '''
-    tsclib.windowsfont(X, Y, fontH, degree, fontStyle, underline, fontName, content)
+    tsclib.windowsfont(X, Y, fontH, degree, fontStyle, underline, fontName.encode("gbk"), content.encode("gbk"))
 
 def about():
     '''
