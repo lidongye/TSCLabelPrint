@@ -23,15 +23,16 @@ def closePrinter():
 def setupPrinter(labelW, labelH, speed, darkness, sensor, gap, offset):
     '''
     设置标签宽度，高度，打印速度，打印浓度，传感器类别，标签垂直间距，偏移距离。
-    :param labelW:
-    :param labelH:
-    :param speed:
-    :param darkness:
-    :param sensor:
-    :param gap:
-    :param offset:
+    :param labelW:字符串型，标签宽度，单位mm
+    :param labelH:字符串型，标签高度，单位mm
+    :param speed:字符串型，打印速度，"1.0"，"1.5"，"2.0"，"3.0"，"4.0"，"6.0"，"8.0"，"10.0"寸/秒
+    :param darkness:字符串型，打印浓度，"0"~"15"
+    :param sensor:字符串型，传感器类别，"0"：垂直间距传感器，"1"：黑标检测传感器
+    :param gap:字符串型，垂直间距，单位mm
+    :param offset:字符串型，偏移距离，单位mm，一般标签为"0"
     :return:
     '''
+    tsclib.setup(labelW, labelH, speed, darkness, sensor, gap, offset)
 
 def clearBuffer():
     '''
@@ -57,6 +58,31 @@ def barCode(X, Y, barType, barH, barText, barDegree, width, narrow, content):
     :return:
     '''
     tsclib.barcode(X, Y, barType, barH, barText, barDegree, width, narrow, content)
+
+def printFont(X, Y, fontName, degree, scaleX, scaleY, content):
+    '''
+    使用打印机内部字库打印文字
+    :param X: 字符串型， X方向起点
+    :param Y: 字符串型，Y方向起点
+    :param fontName:字符串型，内部字库名称：1: 8*/12 dots
+                                        2: 12*20 dots
+                                        3: 16*24 dots
+                                        4: 24*32 dots
+                                        5: 32*48 dots
+                                        TST24.BF2: 繁体中文24*24
+                                        TST16.BF2: 繁体中文16*16
+                                        TTT24.BF2: 繁体中文24*24 (电信码)
+                                        TSS24.BF2: 简体中文24*24
+                                        TSS16.BF2: 简体中文16*16
+                                        K: 韩文24*24
+                                        L: 韩文16*16
+    :param degree:字符串型，旋转角度，"0":不旋转，"90"：旋转90度，"180"：旋转180度，"270":旋转270度
+    :param scaleX:字符串型，X方向放大倍数，"1"~"8"
+    :param scaleY:字符串型，Y方向放大倍数，"1"~"8"
+    :param content:字符串型，文字内容
+    :return:无
+    '''
+    tsclib.printfont(X, Y, fontName, degree, scaleX, scaleY, content)
 
 def sendCommand(command):
     '''
@@ -90,3 +116,41 @@ def formFeed():
     :return: 无
     '''
     tsclib.formfeed()
+
+def nobackFeed():
+    '''
+    设置纸张不回吐
+    :return: 无
+    '''
+    tsclib.nobackfeed()
+
+def windowsFont(X, Y, fontH, degree, fontStyle, underline, fontName, content):
+    '''
+    使用Windows TTF字体打印文字
+    :param X: 整数型，X方向起点
+    :param Y: 整数型Y方向起点
+    :param fontH:整数型，字体高度
+    :param degree: 整数型，旋转角度，0:不旋转，90：旋转90度，180：旋转180度，270:旋转270度
+    :param fontStyle: 整数型，字形， 0：标准，1：倾斜，2，加粗，3：加粗倾斜
+    :param underline: 整数型，下划线，0：无下划线，1：有下划线
+    :param fontName: 字符串型，字体名称，如"宋体"
+    :param content: 字符串型，打印内容
+    :return: 无
+    '''
+    tsclib.windowsfont(X, Y, fontH, degree, fontStyle, underline, fontName, content)
+
+def about():
+    '''
+    显示DLL版本号
+    :return: 无
+    '''
+    tsclib.about()
+
+def sendBinaryData(binData, binLen):
+    '''
+    传送二进制数据
+    :param binData:二进制数据
+    :param binLen: 整数型，数据长度
+    :return:
+    '''
+    tsclib.sendBinaryData(binData, binLen)
