@@ -154,3 +154,38 @@ def sendBinaryData(binData, binLen):
     :return:
     '''
     tsclib.sendBinaryData(binData, binLen)
+
+def windowsFontUnicode(X, Y, fontH, degree, fontStyle, underline, fontName, binData):
+    '''
+    使用Windows TTF字体打印Unicode文字
+    :param X: 整数型，X方向起点
+    :param Y: 整数型Y方向起点
+    :param fontH: 整数型，字体高度
+    :param degree: 整数型，旋转角度，0:不旋转，90：旋转90度，180：旋转180度，270:旋转270度
+    :param fontStyle: 整数型，字形， 0：标准，1：倾斜，2，加粗，3：加粗倾斜
+    :param underline: 整数型，下划线，0：无下划线，1：有下划线
+    :param fontName: 字符串型，字体名称，如"宋体"
+    :param binData: 二进制数据
+    :return: 无
+    '''
+    tsclib.wondowsfontUnicode(X, Y, fontH, degree, fontStyle, underline, fontName, binData)
+
+def usbportQuery():
+    '''
+    从usb接口查询打印机状态，参考TSPL手册中的<ESC>!?指令
+    :return:
+    '''
+    tsclib.usbportqueryprinter()
+
+def usbprinterName():
+    '''
+    从usb接口返回打印机名称
+    :return:
+    '''
+    tsclib.usbprintername()
+
+def usbprinterSerial():
+    '''
+    从usb接口返回打印机序号
+    :return:
+    '''
