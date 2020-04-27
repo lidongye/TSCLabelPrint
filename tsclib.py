@@ -57,7 +57,7 @@ def barCode(X, Y, barType, barH, barText, barDegree, width, narrow, content):
     :param content: 字符串型，条形码内容
     :return:
     '''
-    tsclib.barcode(X, Y, barType, barH, barText, barDegree, width, narrow, content)
+    tsclib.barcode(str(X).encode("gbk"), str(Y).encode("gbk"), barType.encode("gbk"), str(barH).encode("gbk"), str(barText).encode("gbk"), str(barDegree).encode("gbk"), str(width).encode("gbk"), str(narrow).encode("gbk"), content.encode("gbk"))
 
 def printFont(X, Y, fontName, degree, scaleX, scaleY, content):
     '''
