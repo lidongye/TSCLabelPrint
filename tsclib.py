@@ -32,7 +32,9 @@ def setupPrinter(labelW, labelH, speed, darkness, sensor, gap, offset):
     :param offset:字符串型，偏移距离，单位mm，一般标签为"0"
     :return:
     '''
-    tsclib.setup(str(labelW).encode("gbk"), str(labelH).encode("gbk"), str(speed).encode("gbk"), str(darkness).encode("gbk"), str(sensor).encode("gbk"), str(gap).encode("gbk"), str(offset).encode("gbk"))  # 为调用方便转成字符串型
+    tsclib.setup(str(labelW).encode("gbk"), str(labelH).encode("gbk"), str(speed).encode("gbk"),
+                 str(darkness).encode("gbk"), str(sensor).encode("gbk"), str(gap).encode("gbk"),
+                 str(offset).encode("gbk"))  # 为调用方便转成字符串型
 
 def clearBuffer():
     '''
@@ -57,7 +59,9 @@ def barCode(X, Y, barType, barH, barText, barDegree, width, narrow, content):
     :param content: 字符串型，条形码内容
     :return:
     '''
-    tsclib.barcode(str(X).encode("gbk"), str(Y).encode("gbk"), barType.encode("gbk"), str(barH).encode("gbk"), str(barText).encode("gbk"), str(barDegree).encode("gbk"), str(width).encode("gbk"), str(narrow).encode("gbk"), content.encode("gbk"))
+    tsclib.barcode(str(X).encode("gbk"), str(Y).encode("gbk"), barType.encode("gbk"), str(barH).encode("gbk"),
+                   str(barText).encode("gbk"), str(barDegree).encode("gbk"), str(width).encode("gbk"),
+                   str(narrow).encode("gbk"), content.encode("gbk"))
 
 def printFont(X, Y, fontName, degree, scaleX, scaleY, content):
     '''
@@ -82,7 +86,8 @@ def printFont(X, Y, fontName, degree, scaleX, scaleY, content):
     :param content:字符串型，文字内容
     :return:无
     '''
-    tsclib.printerfont(str(X).encode("gbk"), str(Y).encode("gbk"), fontName.encode("gbk"), str(degree).encode("gbk"), str(scaleX).encode("gbk"), str(scaleY).encode("gbk"), content.encode("gbk"))
+    tsclib.printerfont(str(X).encode("gbk"), str(Y).encode("gbk"), fontName.encode("gbk"), str(degree).encode("gbk"),
+                       str(scaleX).encode("gbk"), str(scaleY).encode("gbk"), content.encode("gbk"))
 
 def sendCommand(command):
     '''
